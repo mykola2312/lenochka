@@ -1,0 +1,437 @@
+
+Allocating common symbols
+Common symbol       size              file
+
+lmem                0x8               kobj/kmain.o
+s_iY                0x4               kobj/vga_terminal.o
+g_fat               0x68              kobj/fat.o
+disk1               0x8               kobj/kmain.o
+s_iX                0x4               kobj/vga_terminal.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+                0x0000001fc0000000                . = 0x1fc0000000
+
+.text           0x0000001fc0000000     0x885d
+ *(.text)
+ .text          0x0000001fc0000000       0x12 kobj/start.o
+                0x0000001fc0000000                _start
+ .text          0x0000001fc0000012      0xd0a kobj/kmain.o
+                0x0000001fc0000012                command_interpreter
+                0x0000001fc00009f4                kmain
+ *fill*         0x0000001fc0000d1c        0x4 
+ .text          0x0000001fc0000d20       0x5b kobj/x64io.o
+                0x0000001fc0000d20                inb
+                0x0000001fc0000d25                outb
+                0x0000001fc0000d2d                inw
+                0x0000001fc0000d33                outw
+                0x0000001fc0000d3c                inl
+                0x0000001fc0000d41                outl
+                0x0000001fc0000d49                _insw
+                0x0000001fc0000d56                _outsw
+                0x0000001fc0000d60                _insw256
+                0x0000001fc0000d6f                _outsw256
+ .text          0x0000001fc0000d7b     0x1441 kobj/stdlib.o
+                0x0000001fc0000d7b                iprint
+                0x0000001fc0000ebd                uprint
+                0x0000001fc0000fac                xprint
+                0x0000001fc0001088                fprint
+                0x0000001fc00011df                iprints
+                0x0000001fc0001327                uprints
+                0x0000001fc000141c                xprints
+                0x0000001fc00014fe                kprint
+                0x0000001fc0001520                ksprintf
+                0x0000001fc000183b                kprintf
+                0x0000001fc0001ac4                kgetch
+                0x0000001fc0001b0f                kgetc
+                0x0000001fc0001b5b                kgets
+                0x0000001fc0001dde                katoi
+                0x0000001fc0001e1d                katou
+                0x0000001fc0001ee3                ksscanf
+ .text          0x0000001fc00021bc      0x642 kobj/string.o
+                0x0000001fc00021bc                kstrlen
+                0x0000001fc00021ed                kstrcpy
+                0x0000001fc0002225                kstrncpy
+                0x0000001fc000228a                kstrchr
+                0x0000001fc00022c6                kstrrchr
+                0x0000001fc0002323                kstrcmp
+                0x0000001fc00023a9                kstrncmp
+                0x0000001fc00023eb                kstrcasecmp
+                0x0000001fc00024f5                ktoupper
+                0x0000001fc000251d                ktolower
+                0x0000001fc0002545                kchrlen
+                0x0000001fc000259e                kchr2dbcs
+                0x0000001fc0002655                kdbcslen
+                0x0000001fc0002687                kdbcs2str
+ .text          0x0000001fc00027fe      0x7bb kobj/vga_terminal.o
+                0x0000001fc00027fe                vga_terminal_init
+                0x0000001fc000290e                update_cursor
+                0x0000001fc0002915                cls
+                0x0000001fc0002ab5                printchar
+                0x0000001fc0002cae                printbmp
+                0x0000001fc0002dd3                shiftscreen
+                0x0000001fc0002f00                chg_color
+                0x0000001fc0002f20                print
+                0x0000001fc0002f7c                move_to_next_char
+                0x0000001fc0002f83                move_to_next_line
+                0x0000001fc0002f8a                locate
+ *fill*         0x0000001fc0002fb9        0x7 
+ .text          0x0000001fc0002fc0       0x50 kobj/x64stdlib.o
+                0x0000001fc0002fc0                kmemcpy
+                0x0000001fc0002fd4                kmemcmp
+                0x0000001fc0002ff9                kmemzero
+ .text          0x0000001fc0003010       0x39 kobj/va_list.o
+                0x0000001fc0003010                va_start
+                0x0000001fc0003026                va_arg
+ .text          0x0000001fc0003049      0x1c0 kobj/idt.o
+                0x0000001fc0003049                idt_set_handler
+                0x0000001fc0003163                idt_call_handler
+                0x0000001fc00031a9                idt_install
+                0x0000001fc0003201                idt_enable_interrupts
+ *fill*         0x0000001fc0003209        0x7 
+ .text          0x0000001fc0003210       0x28 kobj/x64idt.o
+                0x0000001fc0003210                _idt_install
+ *fill*         0x0000001fc0003238        0x8 
+ .text          0x0000001fc0003240      0x780 kobj/x64ints.o
+                0x0000001fc0003240                int0_handler
+                0x0000001fc000327c                int1_handler
+                0x0000001fc00032b8                int2_handler
+                0x0000001fc00032f4                int3_handler
+                0x0000001fc0003330                int4_handler
+                0x0000001fc000336c                int5_handler
+                0x0000001fc00033a8                int6_handler
+                0x0000001fc00033e4                int7_handler
+                0x0000001fc0003420                int8_handler
+                0x0000001fc000345c                int9_handler
+                0x0000001fc0003498                int10_handler
+                0x0000001fc00034d4                int11_handler
+                0x0000001fc0003510                int12_handler
+                0x0000001fc000354c                int13_handler
+                0x0000001fc0003588                int14_handler
+                0x0000001fc00035c4                int15_handler
+                0x0000001fc0003600                int16_handler
+                0x0000001fc000363c                int17_handler
+                0x0000001fc0003678                int18_handler
+                0x0000001fc00036b4                int19_handler
+                0x0000001fc00036f0                int20_handler
+                0x0000001fc000372c                int21_handler
+                0x0000001fc0003768                int22_handler
+                0x0000001fc00037a4                int23_handler
+                0x0000001fc00037e0                int24_handler
+                0x0000001fc000381c                int25_handler
+                0x0000001fc0003858                int26_handler
+                0x0000001fc0003894                int27_handler
+                0x0000001fc00038d0                int28_handler
+                0x0000001fc000390c                int29_handler
+                0x0000001fc0003948                int30_handler
+                0x0000001fc0003984                int31_handler
+ .text          0x0000001fc00039c0      0x1c5 kobj/pic.o
+                0x0000001fc00039c0                pic_init
+                0x0000001fc0003ab3                pic_set_mask
+                0x0000001fc0003b45                pic_send_eoi
+ .text          0x0000001fc0003b85      0x12e kobj/pit.o
+                0x0000001fc0003b85                timer_interrupt
+                0x0000001fc0003bcd                sleep
+                0x0000001fc0003c34                pit_init
+ .text          0x0000001fc0003cb3      0x462 kobj/exceptions.o
+                0x0000001fc0003cba                _enter_rescue_mode
+                0x0000001fc0003cc1                enter_rescue_mode
+                0x0000001fc0003da8                exception0
+                0x0000001fc0003ddb                exception3
+                0x0000001fc0003e0e                exception6
+                0x0000001fc0003e41                exception7
+                0x0000001fc0003e74                exception8
+                0x0000001fc0003ea7                exception10
+                0x0000001fc0003eda                exception11
+                0x0000001fc0003f0d                exception12
+                0x0000001fc0003f40                exception13
+                0x0000001fc0003f87                exception14
+                0x0000001fc0003fce                install_exceptions
+ .text          0x0000001fc0004115      0x46e kobj/keyboard.o
+                0x0000001fc00041d3                keyboard_interrupt
+                0x0000001fc00042a8                keyboard_scan_code
+                0x0000001fc00042bb                keyboard_ascii
+                0x0000001fc00044d0                keyboard_sym
+                0x0000001fc00044f8                keyboard_reset_irq1_vars
+                0x0000001fc000450c                keyboard_enable
+                0x0000001fc0004529                keyboard_disable
+                0x0000001fc0004546                keyboard_install
+ .text          0x0000001fc0004583      0x4e3 kobj/paging.o
+                0x0000001fc0004583                page_map
+                0x0000001fc00047ad                page_unmap
+                0x0000001fc0004a05                page_v2p
+ .text          0x0000001fc0004a66      0x225 kobj/multiboot.o
+                0x0000001fc0004a66                mbt_scan_memory
+ .text          0x0000001fc0004c8b      0x217 kobj/lvalloc.o
+                0x0000001fc0004c8b                lvalloc
+                0x0000001fc0004d75                lvalloc_get_next_addr
+                0x0000001fc0004dad                lvalloc_push
+                0x0000001fc0004e04                lvalloc_pop
+                0x0000001fc0004e54                lvalloc_init
+ .text          0x0000001fc0004ea2      0x55f kobj/pci.o
+                0x0000001fc0004ea2                pci_read_config_word
+                0x0000001fc0004f18                pci_read_config_word_dev
+                0x0000001fc0004f6c                pci_get_class
+                0x0000001fc0004fa6                pci_get_subclass
+                0x0000001fc0005071                pci_dump
+                0x0000001fc0005354                pci_detect_hardware
+                0x0000001fc0005396                pci_find_device
+ .text          0x0000001fc0005401      0x9fe kobj/ahci.o
+                0x0000001fc0005401                ahci_issue_cmd
+                0x0000001fc000548f                ahci_read_sectors
+                0x0000001fc000576c                ahci_identify
+                0x0000001fc00058f0                port_start
+                0x0000001fc0005925                port_stop
+                0x0000001fc00059da                port_rebase
+                0x0000001fc0005a9b                ahci_get_sata
+                0x0000001fc0005aaf                ahci_get_atapi
+                0x0000001fc0005ac3                ahci_init
+ .text          0x0000001fc0005dff      0x589 kobj/disk.o
+                0x0000001fc0005e15                disk_get
+                0x0000001fc0005e68                disk_available
+                0x0000001fc0005ec6                disk_read_ex
+                0x0000001fc0005f72                disk_write_ex
+                0x0000001fc000601e                disk_read
+                0x0000001fc00060e7                disk_write
+                0x0000001fc000618f                disk_setup
+                0x0000001fc00062b4                disk_init
+ .text          0x0000001fc0006388      0xda4 kobj/fat.o
+                0x0000001fc0006388                fat_read_cluster
+                0x0000001fc0006450                fat_table_read_entry
+                0x0000001fc0006517                fat_read_file
+                0x0000001fc00065f1                fat_nametofmt38
+                0x0000001fc000671a                fat_fmt38toname
+                0x0000001fc0006810                fat_is_valid_file
+                0x0000001fc0006858                fat_first_file
+                0x0000001fc0006ab4                fat_next_file
+                0x0000001fc0006d4f                fat_find_file
+                0x0000001fc0006f01                fat_init
+ .text          0x0000001fc000712c      0x6cf kobj/heap.o
+                0x0000001fc0007180                heap_join
+                0x0000001fc0007289                heap_split
+                0x0000001fc000731b                heap_alloc
+                0x0000001fc000747e                heap_free
+                0x0000001fc00074e4                heap_init
+                0x0000001fc00076fc                kmalloc
+                0x0000001fc0007734                krealloc
+                0x0000001fc00077c2                kfree
+ *fill*         0x0000001fc00077fb        0x5 
+ .text          0x0000001fc0007800        0x9 kobj/x64utils.o
+                0x0000001fc0007800                x64_get_cr2
+                0x0000001fc0007804                x64_rax_n_stop
+ .text          0x0000001fc0007809      0x36e kobj/file.o
+                0x0000001fc00079e8                file_load
+ *fill*         0x0000001fc0007b77        0x9 
+ .text          0x0000001fc0007b80        0xb kobj/x64font.o
+                0x0000001fc0007b80                x64_get_font
+ .text          0x0000001fc0007b8b      0x99e kobj/video.o
+                0x0000001fc0007b8b                video_pixel
+                0x0000001fc0007d0c                video_char
+                0x0000001fc0007ec0                video_rect_zero
+                0x0000001fc0007f84                video_line_copy
+                0x0000001fc0008027                video_line_zero
+                0x0000001fc0008095                video_clear
+                0x0000001fc00080d6                video_swap
+                0x0000001fc00080dd                video_init
+ .text          0x0000001fc0008529      0x334 kobj/bmp.o
+                0x0000001fc0008529                bmp_draw
+
+.iplt           0x0000001fc0008860        0x0
+ .iplt          0x0000001fc0008860        0x0 kobj/start.o
+
+.rodata         0x0000001fc0009000      0xc9c
+ *(.rodata)
+ .rodata        0x0000001fc0009000      0x1e1 kobj/kmain.o
+ *fill*         0x0000001fc00091e1        0x7 
+ .rodata        0x0000001fc00091e8       0xc0 kobj/stdlib.o
+ .rodata        0x0000001fc00092a8        0x7 kobj/string.o
+ .rodata        0x0000001fc00092af        0xa kobj/vga_terminal.o
+ *fill*         0x0000001fc00092b9        0x7 
+ .rodata        0x0000001fc00092c0       0x24 kobj/idt.o
+ *fill*         0x0000001fc00092e4        0x4 
+ .rodata        0x0000001fc00092e8      0x180 kobj/exceptions.o
+ .rodata        0x0000001fc0009468       0x7a kobj/keyboard.o
+ .rodata        0x0000001fc00094e2       0x1a kobj/multiboot.o
+ *fill*         0x0000001fc00094fc        0x4 
+ .rodata        0x0000001fc0009500      0x688 kobj/pci.o
+ .rodata        0x0000001fc0009b88       0x6b kobj/ahci.o
+ .rodata        0x0000001fc0009bf3       0x3b kobj/disk.o
+ .rodata        0x0000001fc0009c2e       0x15 kobj/fat.o
+ .rodata        0x0000001fc0009c43       0x26 kobj/heap.o
+ .rodata        0x0000001fc0009c69       0x33 kobj/file.o
+
+.eh_frame       0x0000001fc0009ca0     0x1388
+ .eh_frame      0x0000001fc0009ca0       0x58 kobj/kmain.o
+                                         0x50 (size before relaxing)
+ .eh_frame      0x0000001fc0009cf8      0x268 kobj/stdlib.o
+                                        0x280 (size before relaxing)
+ .eh_frame      0x0000001fc0009f60      0x1d0 kobj/string.o
+                                        0x1e0 (size before relaxing)
+ .eh_frame      0x0000001fc000a130      0x180 kobj/vga_terminal.o
+                                        0x198 (size before relaxing)
+ .eh_frame      0x0000001fc000a2b0       0x80 kobj/idt.o
+                                         0x98 (size before relaxing)
+ .eh_frame      0x0000001fc000a330       0x60 kobj/pic.o
+                                         0x78 (size before relaxing)
+ .eh_frame      0x0000001fc000a390       0x60 kobj/pit.o
+                                         0x78 (size before relaxing)
+ .eh_frame      0x0000001fc000a3f0      0x1c0 kobj/exceptions.o
+                                        0x1d0 (size before relaxing)
+ .eh_frame      0x0000001fc000a5b0      0x160 kobj/keyboard.o
+                                        0x178 (size before relaxing)
+ .eh_frame      0x0000001fc000a710       0x60 kobj/paging.o
+                                         0x78 (size before relaxing)
+ .eh_frame      0x0000001fc000a770       0x20 kobj/multiboot.o
+                                         0x38 (size before relaxing)
+ .eh_frame      0x0000001fc000a790       0xa0 kobj/lvalloc.o
+                                         0xb8 (size before relaxing)
+ .eh_frame      0x0000001fc000a830      0x148 kobj/pci.o
+                                        0x160 (size before relaxing)
+ .eh_frame      0x0000001fc000a978      0x120 kobj/ahci.o
+                                        0x138 (size before relaxing)
+ .eh_frame      0x0000001fc000aa98      0x120 kobj/disk.o
+                                        0x138 (size before relaxing)
+ .eh_frame      0x0000001fc000abb8      0x188 kobj/fat.o
+                                        0x1a0 (size before relaxing)
+ .eh_frame      0x0000001fc000ad40      0x160 kobj/heap.o
+                                        0x178 (size before relaxing)
+ .eh_frame      0x0000001fc000aea0       0x40 kobj/file.o
+                                         0x58 (size before relaxing)
+ .eh_frame      0x0000001fc000aee0      0x128 kobj/video.o
+                                        0x140 (size before relaxing)
+ .eh_frame      0x0000001fc000b008       0x20 kobj/bmp.o
+                                         0x38 (size before relaxing)
+
+.rdata          0x0000001fc000b028     0xcbde
+ .rdata         0x0000001fc000b028     0xcbde kobj/x64font.o
+
+.rela.dyn       0x0000001fc0017c08        0x0
+ .rela.iplt     0x0000001fc0017c08        0x0 kobj/start.o
+ .rela.text     0x0000001fc0017c08        0x0 kobj/start.o
+ .rela.data     0x0000001fc0017c08        0x0 kobj/start.o
+
+.data           0x0000001fc0018000      0x5a0
+ *(.data)
+ .data          0x0000001fc0018000        0x8 kobj/kmain.o
+ .data          0x0000001fc0018008        0x8 kobj/stdlib.o
+ .data          0x0000001fc0018010        0x0 kobj/string.o
+ *fill*         0x0000001fc0018010       0x10 
+ .data          0x0000001fc0018020       0x60 kobj/vga_terminal.o
+ .data          0x0000001fc0018080      0x100 kobj/idt.o
+ .data          0x0000001fc0018180        0xa kobj/x64idt.o
+ .data          0x0000001fc001818a        0x0 kobj/pic.o
+ .data          0x0000001fc001818a        0x0 kobj/pit.o
+ .data          0x0000001fc001818a        0x0 kobj/exceptions.o
+ *fill*         0x0000001fc001818a       0x16 
+ .data          0x0000001fc00181a0       0x98 kobj/keyboard.o
+ .data          0x0000001fc0018238        0x0 kobj/paging.o
+ .data          0x0000001fc0018238        0x0 kobj/multiboot.o
+ .data          0x0000001fc0018238        0x0 kobj/lvalloc.o
+ *fill*         0x0000001fc0018238        0x8 
+ .data          0x0000001fc0018240      0x360 kobj/pci.o
+ .data          0x0000001fc00185a0        0x0 kobj/ahci.o
+ .data          0x0000001fc00185a0        0x0 kobj/disk.o
+ .data          0x0000001fc00185a0        0x0 kobj/fat.o
+ .data          0x0000001fc00185a0        0x0 kobj/heap.o
+ .data          0x0000001fc00185a0        0x0 kobj/file.o
+ .data          0x0000001fc00185a0        0x0 kobj/video.o
+ .data          0x0000001fc00185a0        0x0 kobj/bmp.o
+
+.igot.plt       0x0000001fc00185a0        0x0
+ .igot.plt      0x0000001fc00185a0        0x0 kobj/start.o
+
+.bss            0x0000001fc0019000    0x13200
+ *(COMMON)
+ COMMON         0x0000001fc0019000       0x10 kobj/kmain.o
+                0x0000001fc0019000                lmem
+                0x0000001fc0019008                disk1
+ COMMON         0x0000001fc0019010        0x8 kobj/vga_terminal.o
+                0x0000001fc0019010                s_iY
+                0x0000001fc0019014                s_iX
+ *fill*         0x0000001fc0019018        0x8 
+ COMMON         0x0000001fc0019020       0x68 kobj/fat.o
+                0x0000001fc0019020                g_fat
+ *(.bss)
+ *fill*         0x0000001fc0019088        0x8 
+ .bss           0x0000001fc0019090    0x10000 kobj/start.o
+ .bss           0x0000001fc0029090        0x0 kobj/kmain.o
+ .bss           0x0000001fc0029090        0x0 kobj/stdlib.o
+ .bss           0x0000001fc0029090        0x0 kobj/string.o
+ .bss           0x0000001fc0029090        0xc kobj/vga_terminal.o
+ *fill*         0x0000001fc002909c        0x4 
+ .bss           0x0000001fc00290a0     0x1808 kobj/idt.o
+ .bss           0x0000001fc002a8a8        0x0 kobj/pic.o
+ .bss           0x0000001fc002a8a8        0x8 kobj/pit.o
+ .bss           0x0000001fc002a8b0        0x0 kobj/exceptions.o
+ .bss           0x0000001fc002a8b0        0xc kobj/keyboard.o
+ .bss           0x0000001fc002a8bc        0x0 kobj/paging.o
+ .bss           0x0000001fc002a8bc        0x0 kobj/multiboot.o
+ .bss           0x0000001fc002a8bc        0x0 kobj/lvalloc.o
+ *fill*         0x0000001fc002a8bc        0x4 
+ .bss           0x0000001fc002a8c0      0x404 kobj/pci.o
+ *fill*         0x0000001fc002acc4       0x1c 
+ .bss           0x0000001fc002ace0       0x28 kobj/ahci.o
+ *fill*         0x0000001fc002ad08      0x2f8 
+ .bss           0x0000001fc002b000     0x1200 kobj/disk.o
+ .bss           0x0000001fc002c200        0x0 kobj/fat.o
+ .bss           0x0000001fc002c200        0x0 kobj/heap.o
+ .bss           0x0000001fc002c200        0x0 kobj/file.o
+ .bss           0x0000001fc002c200        0x0 kobj/video.o
+ .bss           0x0000001fc002c200        0x0 kobj/bmp.o
+LOAD kobj/start.o
+LOAD kobj/kmain.o
+LOAD kobj/x64io.o
+LOAD kobj/stdlib.o
+LOAD kobj/string.o
+LOAD kobj/vga_terminal.o
+LOAD kobj/x64stdlib.o
+LOAD kobj/va_list.o
+LOAD kobj/idt.o
+LOAD kobj/x64idt.o
+LOAD kobj/x64ints.o
+LOAD kobj/pic.o
+LOAD kobj/pit.o
+LOAD kobj/exceptions.o
+LOAD kobj/keyboard.o
+LOAD kobj/paging.o
+LOAD kobj/multiboot.o
+LOAD kobj/lvalloc.o
+LOAD kobj/pci.o
+LOAD kobj/ahci.o
+LOAD kobj/disk.o
+LOAD kobj/fat.o
+LOAD kobj/heap.o
+LOAD kobj/x64utils.o
+LOAD kobj/file.o
+LOAD kobj/x64font.o
+LOAD kobj/video.o
+LOAD kobj/bmp.o
+OUTPUT(os/lenochka.elf elf64-x86-64)
+
+.comment        0x0000000000000000       0x11
+ .comment       0x0000000000000000       0x11 kobj/kmain.o
+                                         0x12 (size before relaxing)
+ .comment       0x0000000000000011       0x12 kobj/stdlib.o
+ .comment       0x0000000000000011       0x12 kobj/string.o
+ .comment       0x0000000000000011       0x12 kobj/vga_terminal.o
+ .comment       0x0000000000000011       0x12 kobj/idt.o
+ .comment       0x0000000000000011       0x12 kobj/pic.o
+ .comment       0x0000000000000011       0x12 kobj/pit.o
+ .comment       0x0000000000000011       0x12 kobj/exceptions.o
+ .comment       0x0000000000000011       0x12 kobj/keyboard.o
+ .comment       0x0000000000000011       0x12 kobj/paging.o
+ .comment       0x0000000000000011       0x12 kobj/multiboot.o
+ .comment       0x0000000000000011       0x12 kobj/lvalloc.o
+ .comment       0x0000000000000011       0x12 kobj/pci.o
+ .comment       0x0000000000000011       0x12 kobj/ahci.o
+ .comment       0x0000000000000011       0x12 kobj/disk.o
+ .comment       0x0000000000000011       0x12 kobj/fat.o
+ .comment       0x0000000000000011       0x12 kobj/heap.o
+ .comment       0x0000000000000011       0x12 kobj/file.o
+ .comment       0x0000000000000011       0x12 kobj/video.o
+ .comment       0x0000000000000011       0x12 kobj/bmp.o

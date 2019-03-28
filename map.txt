@@ -1,0 +1,335 @@
+
+Allocating common symbols
+Common symbol       size              file
+
+s_iY                0x4               obj/vga_terminal.o
+s_iX                0x4               obj/vga_terminal.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+                0x00000000c0100000                . = 0xc0100000
+                0x00000000c0100000                _kernel_start = .
+
+.text           0x00000000c0100000     0x32a6 load address 0x0000000000100000
+ *(.multiboot)
+ .multiboot     0x00000000c0100000        0xc obj/multiboot.o
+ *(.text)
+ *fill*         0x00000000c010000c        0x4 
+ .text          0x00000000c0100010       0x92 obj/multiboot.o
+                0x00000000c0100010                _start
+ .text          0x00000000c01000a2      0x48f obj/kmain.o
+                0x00000000c01000a2                command_interpreter
+                0x00000000c0100381                kernel_main
+ .text          0x00000000c0100531      0x355 obj/vga_terminal.o
+                0x00000000c0100531                vga_terminal_init
+                0x00000000c0100553                update_cursor
+                0x00000000c01005d2                cls
+                0x00000000c0100619                printchar
+                0x00000000c0100783                shiftscreen
+                0x00000000c010081c                chg_color
+                0x00000000c0100834                print
+                0x00000000c0100864                move_to_next_char
+                0x00000000c010086a                move_to_next_line
+                0x00000000c0100870                locate
+ .text          0x00000000c0100886      0xc15 obj/stdlib.o
+                0x00000000c0100886                iprint
+                0x00000000c0100974                uprint
+                0x00000000c0100a22                xprint
+                0x00000000c0100ac4                iprints
+                0x00000000c0100bb4                uprints
+                0x00000000c0100c64                xprints
+                0x00000000c0100d08                kprint
+                0x00000000c0100d38                ksprintf
+                0x00000000c0100f25                kprintf
+                0x00000000c010104b                kgetch
+                0x00000000c0101070                kgetc
+                0x00000000c0101095                kgets
+                0x00000000c0101264                katoi
+                0x00000000c010128c                katou
+                0x00000000c010131f                ksscanf
+ *fill*         0x00000000c010149b        0x5 
+ .text          0x00000000c01014a0       0x87 obj/x86stdlib.o
+                0x00000000c01014a0                kmemcpy
+                0x00000000c01014c9                kmemcmp
+                0x00000000c0101505                kmemzero
+ .text          0x00000000c0101527      0x1d7 obj/gdt.o
+                0x00000000c0101527                gdt_create
+                0x00000000c0101689                gdt_install
+ *fill*         0x00000000c01016fe        0x2 
+ .text          0x00000000c0101700       0x34 obj/x86gdt.o
+                0x00000000c0101700                _gdt_install
+ .text          0x00000000c0101734      0x173 obj/pic.o
+                0x00000000c0101734                pic_init
+                0x00000000c01017f2                pic_set_mask
+                0x00000000c0101877                pic_send_eoi
+ .text          0x00000000c01018a7      0x1ed obj/idt.o
+                0x00000000c01018a7                idt_create
+                0x00000000c010194f                idt_setup
+                0x00000000c01019bf                idt_irq_by_addr
+                0x00000000c01019fa                idt_handler_entry
+                0x00000000c0101a40                idt_install
+                0x00000000c0101a8d                idt_enable_interrupts
+ *fill*         0x00000000c0101a94        0xc 
+ .text          0x00000000c0101aa0       0x1f obj/x86idt.o
+                0x00000000c0101aa0                _idt_install
+ *fill*         0x00000000c0101abf        0x1 
+ .text          0x00000000c0101ac0      0x2a0 obj/x86int.o
+                0x00000000c0101ac0                _int0_handler
+                0x00000000c0101ad5                _int1_handler
+                0x00000000c0101aea                _int2_handler
+                0x00000000c0101aff                _int3_handler
+                0x00000000c0101b14                _int4_handler
+                0x00000000c0101b29                _int5_handler
+                0x00000000c0101b3e                _int6_handler
+                0x00000000c0101b53                _int7_handler
+                0x00000000c0101b68                _int8_handler
+                0x00000000c0101b7d                _int9_handler
+                0x00000000c0101b92                _int10_handler
+                0x00000000c0101ba7                _int11_handler
+                0x00000000c0101bbc                _int12_handler
+                0x00000000c0101bd1                _int13_handler
+                0x00000000c0101be6                _int14_handler
+                0x00000000c0101bfb                _int15_handler
+                0x00000000c0101c10                _int16_handler
+                0x00000000c0101c25                _int17_handler
+                0x00000000c0101c3a                _int18_handler
+                0x00000000c0101c4f                _int19_handler
+                0x00000000c0101c64                _int20_handler
+                0x00000000c0101c79                _int21_handler
+                0x00000000c0101c8e                _int22_handler
+                0x00000000c0101ca3                _int23_handler
+                0x00000000c0101cb8                _int24_handler
+                0x00000000c0101ccd                _int25_handler
+                0x00000000c0101ce2                _int26_handler
+                0x00000000c0101cf7                _int27_handler
+                0x00000000c0101d0c                _int28_handler
+                0x00000000c0101d21                _int29_handler
+                0x00000000c0101d36                _int30_handler
+                0x00000000c0101d4b                _int31_handler
+ .text          0x00000000c0101d60      0x133 obj/string.o
+                0x00000000c0101d60                kstrlen
+                0x00000000c0101d88                kstrcpy
+                0x00000000c0101dad                kstrncpy
+                0x00000000c0101df4                kstrchr
+                0x00000000c0101e27                kstrrchr
+                0x00000000c0101e6e                kstrncmp
+ .text          0x00000000c0101e93      0x26e obj/paging.o
+                0x00000000c0101e93                page_map
+                0x00000000c0101f94                page_unmap
+                0x00000000c01020a4                page_v2p
+ *fill*         0x00000000c0102101        0xf 
+ .text          0x00000000c0102110       0x81 obj/x86utils.o
+                0x00000000c0102110                x86_get_regs
+                0x00000000c0102181                x86_reload_cr3
+                0x00000000c0102188                _load_legacy_stack
+ .text          0x00000000c0102191      0x168 obj/x86_utils.o
+                0x00000000c0102191                x86_print_regs
+ .text          0x00000000c01022f9      0x2b4 obj/keyboard.o
+                0x00000000c010239a                keyboard_interrupt
+                0x00000000c010243a                keyboard_scan_code
+                0x00000000c0102446                keyboard_ascii
+                0x00000000c0102542                keyboard_reset_irq1_vars
+                0x00000000c010254f                keyboard_enable
+                0x00000000c0102567                keyboard_disable
+                0x00000000c010257f                keyboard_install
+ .text          0x00000000c01025ad      0x2d7 obj/exceptions.o
+                0x00000000c01025bb                _enter_rescue_mode
+                0x00000000c01025de                enter_rescue_mode
+                0x00000000c0102666                exception0
+                0x00000000c0102684                exception3
+                0x00000000c01026a2                exception6
+                0x00000000c01026c0                exception7
+                0x00000000c01026de                exception8
+                0x00000000c01026fc                exception10
+                0x00000000c010271a                exception11
+                0x00000000c0102738                exception12
+                0x00000000c0102756                exception13
+                0x00000000c0102774                exception14
+                0x00000000c010279f                install_exceptions
+ .text          0x00000000c0102884       0xdd obj/memory.o
+                0x00000000c0102884                mbt_mmap_init
+                0x00000000c010294d                ram_get_map
+                0x00000000c0102957                ram_get_size
+ .text          0x00000000c0102961      0x3e9 obj/pci.o
+                0x00000000c0102961                pci_read_config_word
+                0x00000000c01029c5                pci_read_config_word_dev
+                0x00000000c0102a0d                pci_get_class
+                0x00000000c0102a29                pci_get_subclass
+                0x00000000c0102ab1                pci_dump
+                0x00000000c0102cc5                pci_detect_hardware
+                0x00000000c0102cfc                pci_find_device
+ *fill*         0x00000000c0102d4a        0x6 
+ .text          0x00000000c0102d50       0x7d obj/x86io.o
+                0x00000000c0102d50                inb
+                0x00000000c0102d56                outb
+                0x00000000c0102d60                inw
+                0x00000000c0102d67                outw
+                0x00000000c0102d72                inl
+                0x00000000c0102d78                outl
+                0x00000000c0102d82                _insw
+                0x00000000c0102d99                _outsw
+                0x00000000c0102db0                _insw256
+                0x00000000c0102dc1                _outsw256
+ .text          0x00000000c0102dcd       0xc2 obj/pit.o
+                0x00000000c0102dcd                timer_interrupt
+                0x00000000c0102df9                sleep
+                0x00000000c0102e34                pit_init
+ .text          0x00000000c0102e8f      0x417 obj/ahci.o
+                0x00000000c0102e8f                sata_identify
+                0x00000000c01030e7                ahci_init
+
+.iplt           0x00000000c01032b0        0x0 load address 0x00000000001032b0
+ .iplt          0x00000000c01032b0        0x0 obj/multiboot.o
+
+.rodata         0x00000000c0104000      0xc04 load address 0x0000000000104000
+ *(.rodata)
+ .rodata        0x00000000c0104000      0x186 obj/kmain.o
+ *fill*         0x00000000c0104186        0x2 
+ .rodata        0x00000000c0104188       0x68 obj/stdlib.o
+ .rodata        0x00000000c01041f0       0x18 obj/idt.o
+ .rodata        0x00000000c0104208      0x107 obj/x86_utils.o
+ .rodata        0x00000000c010430f        0xd obj/keyboard.o
+ .rodata        0x00000000c010431c      0x16a obj/exceptions.o
+ *fill*         0x00000000c0104486        0x2 
+ .rodata        0x00000000c0104488      0x67c obj/pci.o
+ .rodata        0x00000000c0104b04      0x100 obj/ahci.o
+
+.eh_frame       0x00000000c0104c04      0xbe8 load address 0x0000000000104c04
+ .eh_frame      0x00000000c0104c04       0x50 obj/kmain.o
+ .eh_frame      0x00000000c0104c54      0x148 obj/vga_terminal.o
+                                        0x160 (size before relaxing)
+ .eh_frame      0x00000000c0104d9c      0x244 obj/stdlib.o
+                                        0x25c (size before relaxing)
+ .eh_frame      0x00000000c0104fe0       0x50 obj/gdt.o
+                                         0x68 (size before relaxing)
+ .eh_frame      0x00000000c0105030       0x60 obj/pic.o
+                                         0x78 (size before relaxing)
+ .eh_frame      0x00000000c0105090       0xf0 obj/idt.o
+                                        0x108 (size before relaxing)
+ .eh_frame      0x00000000c0105180       0xc0 obj/string.o
+                                         0xd8 (size before relaxing)
+ .eh_frame      0x00000000c0105240       0x60 obj/paging.o
+                                         0x78 (size before relaxing)
+ .eh_frame      0x00000000c01052a0       0x30 obj/x86_utils.o
+                                         0x48 (size before relaxing)
+ .eh_frame      0x00000000c01052d0      0x120 obj/keyboard.o
+                                        0x138 (size before relaxing)
+ .eh_frame      0x00000000c01053f0      0x1b8 obj/exceptions.o
+                                        0x1d0 (size before relaxing)
+ .eh_frame      0x00000000c01055a8       0x60 obj/memory.o
+                                         0x78 (size before relaxing)
+ .eh_frame      0x00000000c0105608      0x144 obj/pci.o
+                                        0x15c (size before relaxing)
+ .eh_frame      0x00000000c010574c       0x60 obj/pit.o
+                                         0x78 (size before relaxing)
+ .eh_frame      0x00000000c01057ac       0x40 obj/ahci.o
+                                         0x58 (size before relaxing)
+
+.rel.dyn        0x00000000c01057ec        0x0 load address 0x00000000001057ec
+ .rel.iplt      0x00000000c01057ec        0x0 obj/multiboot.o
+ .rel.text      0x00000000c01057ec        0x0 obj/multiboot.o
+
+.data           0x00000000c0106000      0x270 load address 0x0000000000106000
+ *(.data)
+ .data          0x00000000c0106000        0x4 obj/kmain.o
+ .data          0x00000000c0106004        0x1 obj/vga_terminal.o
+ *fill*         0x00000000c0106005        0x3 
+ .data          0x00000000c0106008        0x4 obj/stdlib.o
+ .data          0x00000000c010600c        0x0 obj/gdt.o
+ .data          0x00000000c010600c        0x6 obj/x86gdt.o
+ .data          0x00000000c0106012        0x0 obj/pic.o
+ .data          0x00000000c0106012        0x0 obj/idt.o
+ *fill*         0x00000000c0106012        0x2 
+ .data          0x00000000c0106014        0x6 obj/x86idt.o
+ .data          0x00000000c010601a        0x0 obj/string.o
+ .data          0x00000000c010601a        0x0 obj/paging.o
+ .data          0x00000000c010601a        0x0 obj/x86_utils.o
+ *fill*         0x00000000c010601a        0x6 
+ .data          0x00000000c0106020       0x84 obj/keyboard.o
+ .data          0x00000000c01060a4        0x0 obj/exceptions.o
+ .data          0x00000000c01060a4        0x0 obj/memory.o
+ *fill*         0x00000000c01060a4       0x1c 
+ .data          0x00000000c01060c0      0x1b0 obj/pci.o
+ .data          0x00000000c0106270        0x0 obj/pit.o
+ .data          0x00000000c0106270        0x0 obj/ahci.o
+
+.igot.plt       0x00000000c0106270        0x0 load address 0x0000000000106270
+ .igot.plt      0x00000000c0106270        0x0 obj/multiboot.o
+
+.bss            0x00000000c0107000   0x40d200 load address 0x0000000000107000
+ *(COMMON)
+ COMMON         0x00000000c0107000        0x8 obj/vga_terminal.o
+                0x00000000c0107000                s_iY
+                0x00000000c0107004                s_iX
+ *(.bss)
+ *fill*         0x00000000c0107008      0xff8 
+ .bss           0x00000000c0108000   0x409004 obj/multiboot.o
+                0x00000000c0108000                page_directories
+                0x00000000c0109000                page_tables
+                0x00000000c0511000                legacy_esp
+ .bss           0x00000000c0511004        0x0 obj/kmain.o
+ .bss           0x00000000c0511004        0x0 obj/vga_terminal.o
+ .bss           0x00000000c0511004        0x0 obj/stdlib.o
+ *fill*         0x00000000c0511004        0x4 
+ .bss           0x00000000c0511008       0x18 obj/gdt.o
+ .bss           0x00000000c0511020        0x0 obj/pic.o
+ .bss           0x00000000c0511020      0xc00 obj/idt.o
+ .bss           0x00000000c0511c20        0x0 obj/string.o
+ .bss           0x00000000c0511c20        0x0 obj/paging.o
+ .bss           0x00000000c0511c20        0x0 obj/x86_utils.o
+ .bss           0x00000000c0511c20        0x8 obj/keyboard.o
+ .bss           0x00000000c0511c28        0x0 obj/exceptions.o
+ *fill*         0x00000000c0511c28       0x18 
+ .bss           0x00000000c0511c40      0x108 obj/memory.o
+ *fill*         0x00000000c0511d48       0x18 
+ .bss           0x00000000c0511d60      0x404 obj/pci.o
+ .bss           0x00000000c0512164        0x4 obj/pit.o
+ *fill*         0x00000000c0512168      0xe98 
+ .bss           0x00000000c0513000     0x1200 obj/ahci.o
+                0x00000000c0514200                _kernel_end = .
+LOAD obj/multiboot.o
+LOAD obj/kmain.o
+LOAD obj/vga_terminal.o
+LOAD obj/stdlib.o
+LOAD obj/x86stdlib.o
+LOAD obj/gdt.o
+LOAD obj/x86gdt.o
+LOAD obj/pic.o
+LOAD obj/idt.o
+LOAD obj/x86idt.o
+LOAD obj/x86int.o
+LOAD obj/string.o
+LOAD obj/paging.o
+LOAD obj/x86utils.o
+LOAD obj/x86_utils.o
+LOAD obj/keyboard.o
+LOAD obj/exceptions.o
+LOAD obj/memory.o
+LOAD obj/pci.o
+LOAD obj/x86io.o
+LOAD obj/pit.o
+LOAD obj/ahci.o
+OUTPUT(os/lenochka.bin elf32-i386)
+
+.comment        0x0000000000000000       0x11
+ .comment       0x0000000000000000       0x11 obj/kmain.o
+                                         0x12 (size before relaxing)
+ .comment       0x0000000000000011       0x12 obj/vga_terminal.o
+ .comment       0x0000000000000011       0x12 obj/stdlib.o
+ .comment       0x0000000000000011       0x12 obj/gdt.o
+ .comment       0x0000000000000011       0x12 obj/pic.o
+ .comment       0x0000000000000011       0x12 obj/idt.o
+ .comment       0x0000000000000011       0x12 obj/string.o
+ .comment       0x0000000000000011       0x12 obj/paging.o
+ .comment       0x0000000000000011       0x12 obj/x86_utils.o
+ .comment       0x0000000000000011       0x12 obj/keyboard.o
+ .comment       0x0000000000000011       0x12 obj/exceptions.o
+ .comment       0x0000000000000011       0x12 obj/memory.o
+ .comment       0x0000000000000011       0x12 obj/pci.o
+ .comment       0x0000000000000011       0x12 obj/pit.o
+ .comment       0x0000000000000011       0x12 obj/ahci.o

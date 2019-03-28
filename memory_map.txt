@@ -1,0 +1,3 @@
+0xC0000000 - 0xC1000000 - kernel
+0xC1000000 - 0xC10B8000 - free kernel memory (736 KB)
+0xC10B8000 - 0xC10B9000 - video buf

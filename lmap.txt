@@ -1,0 +1,254 @@
+
+Allocating common symbols
+Common symbol       size              file
+
+s_iY                0x4               lobj/vga_terminal.o
+s_iX                0x4               lobj/vga_terminal.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+                0x0000000000100000                . = 0x100000
+
+.text           0x0000000000100000     0x3890
+ *(.multiboot)
+ .multiboot     0x0000000000100000       0x30 lobj/loader.o
+ *(.text)
+ .text          0x0000000000100030       0x19 lobj/loader.o
+                0x0000000000100030                _start
+ .text          0x0000000000100049      0xae4 lobj/lmain.o
+                0x0000000000100073                page_map
+                0x0000000000100281                elf64_load
+                0x0000000000100454                identity_map
+                0x00000000001004a4                map_loader
+                0x000000000010055a                gdt64_entry
+                0x0000000000100600                gdt64_setup
+                0x000000000010067b                scan_memory
+                0x0000000000100714                init_memory
+                0x0000000000100919                lmain
+ *fill*         0x0000000000100b2d        0x3 
+ .text          0x0000000000100b30       0x7d lobj/x86io.o
+                0x0000000000100b30                inb
+                0x0000000000100b36                outb
+                0x0000000000100b40                inw
+                0x0000000000100b47                outw
+                0x0000000000100b52                inl
+                0x0000000000100b58                outl
+                0x0000000000100b62                _insw
+                0x0000000000100b79                _outsw
+                0x0000000000100b90                _insw256
+                0x0000000000100ba1                _outsw256
+ *fill*         0x0000000000100bad        0x3 
+ .text          0x0000000000100bb0       0x87 lobj/x86stdlib.o
+                0x0000000000100bb0                kmemcpy
+                0x0000000000100bd9                kmemcmp
+                0x0000000000100c15                kmemzero
+ *fill*         0x0000000000100c37        0x9 
+ .text          0x0000000000100c40       0x34 lobj/x86gdt.o
+                0x0000000000100c40                _gdt_install
+ .text          0x0000000000100c74      0xcdc lobj/stdlib.o
+                0x0000000000100c74                iprint
+                0x0000000000100d62                uprint
+                0x0000000000100e10                xprint
+                0x0000000000100eb2                lprint
+                0x0000000000100f72                iprints
+                0x0000000000101062                uprints
+                0x0000000000101112                xprints
+                0x00000000001011b6                kprint
+                0x00000000001011e6                ksprintf
+                0x00000000001013d3                kprintf
+                0x0000000000101536                kgetch
+                0x0000000000101540                kgetc
+                0x000000000010154a                kgets
+                0x0000000000101719                katoi
+                0x0000000000101741                katou
+                0x00000000001017d4                ksscanf
+ .text          0x0000000000101950      0x133 lobj/string.o
+                0x0000000000101950                kstrlen
+                0x0000000000101978                kstrcpy
+                0x000000000010199d                kstrncpy
+                0x00000000001019e4                kstrchr
+                0x0000000000101a17                kstrrchr
+                0x0000000000101a5e                kstrncmp
+ .text          0x0000000000101a83      0x339 lobj/vga_terminal.o
+                0x0000000000101a83                vga_terminal_init
+                0x0000000000101a89                update_cursor
+                0x0000000000101b08                cls
+                0x0000000000101b4f                printchar
+                0x0000000000101cb9                shiftscreen
+                0x0000000000101d52                chg_color
+                0x0000000000101d6a                print
+                0x0000000000101d9a                move_to_next_char
+                0x0000000000101da0                move_to_next_line
+                0x0000000000101da6                locate
+ .text          0x0000000000101dbc      0x1d7 lobj/gdt.o
+                0x0000000000101dbc                gdt_create
+                0x0000000000101f1e                gdt_install
+ *fill*         0x0000000000101f93       0x6d 
+ .text          0x0000000000102000     0x102b lobj/x86enter64.o
+                0x0000000000102000                x86enter64
+ .text          0x000000000010302b       0xdd lobj/memory.o
+                0x000000000010302b                mbt_mmap_init
+                0x00000000001030f4                ram_get_map
+                0x00000000001030fe                ram_get_size
+ .text          0x0000000000103108      0x1ed lobj/idt.o
+                0x0000000000103108                idt_create
+                0x00000000001031b0                idt_setup
+                0x0000000000103220                idt_irq_by_addr
+                0x000000000010325b                idt_handler_entry
+                0x00000000001032a1                idt_install
+                0x00000000001032ee                idt_enable_interrupts
+ .text          0x00000000001032f5      0x2d9 lobj/exceptions.o
+                0x00000000001032fb                _enter_rescue_mode
+                0x0000000000103301                enter_rescue_mode
+                0x0000000000103389                exception0
+                0x00000000001033a7                exception1
+                0x00000000001033c5                exception3
+                0x00000000001033e3                exception6
+                0x0000000000103401                exception7
+                0x000000000010341f                exception8
+                0x000000000010343d                exception10
+                0x000000000010345b                exception11
+                0x0000000000103479                exception12
+                0x0000000000103497                exception13
+                0x00000000001034b5                exception14
+                0x00000000001034d3                install_exceptions
+ *fill*         0x00000000001035ce        0x2 
+ .text          0x00000000001035d0       0x1f lobj/x86idt.o
+                0x00000000001035d0                _idt_install
+ *fill*         0x00000000001035ef        0x1 
+ .text          0x00000000001035f0      0x2a0 lobj/x86int.o
+                0x00000000001035f0                _int0_handler
+                0x0000000000103605                _int1_handler
+                0x000000000010361a                _int2_handler
+                0x000000000010362f                _int3_handler
+                0x0000000000103644                _int4_handler
+                0x0000000000103659                _int5_handler
+                0x000000000010366e                _int6_handler
+                0x0000000000103683                _int7_handler
+                0x0000000000103698                _int8_handler
+                0x00000000001036ad                _int9_handler
+                0x00000000001036c2                _int10_handler
+                0x00000000001036d7                _int11_handler
+                0x00000000001036ec                _int12_handler
+                0x0000000000103701                _int13_handler
+                0x0000000000103716                _int14_handler
+                0x000000000010372b                _int15_handler
+                0x0000000000103740                _int16_handler
+                0x0000000000103755                _int17_handler
+                0x000000000010376a                _int18_handler
+                0x000000000010377f                _int19_handler
+                0x0000000000103794                _int20_handler
+                0x00000000001037a9                _int21_handler
+                0x00000000001037be                _int22_handler
+                0x00000000001037d3                _int23_handler
+                0x00000000001037e8                _int24_handler
+                0x00000000001037fd                _int25_handler
+                0x0000000000103812                _int26_handler
+                0x0000000000103827                _int27_handler
+                0x000000000010383c                _int28_handler
+                0x0000000000103851                _int29_handler
+                0x0000000000103866                _int30_handler
+                0x000000000010387b                _int31_handler
+
+.iplt           0x0000000000103890        0x0
+ .iplt          0x0000000000103890        0x0 lobj/loader.o
+
+.rodata         0x0000000000104000      0x312
+ *(.rodata)
+ .rodata        0x0000000000104000      0x10e lobj/lmain.o
+ *fill*         0x000000000010410e        0x2 
+ .rodata        0x0000000000104110       0x68 lobj/stdlib.o
+ .rodata        0x0000000000104178       0x18 lobj/idt.o
+ .rodata        0x0000000000104190      0x182 lobj/exceptions.o
+
+.eh_frame       0x0000000000104314      0x99c
+ .eh_frame      0x0000000000104314      0x1b0 lobj/lmain.o
+ .eh_frame      0x00000000001044c4      0x268 lobj/stdlib.o
+                                        0x280 (size before relaxing)
+ .eh_frame      0x000000000010472c       0xc0 lobj/string.o
+                                         0xd8 (size before relaxing)
+ .eh_frame      0x00000000001047ec      0x148 lobj/vga_terminal.o
+                                        0x160 (size before relaxing)
+ .eh_frame      0x0000000000104934       0x50 lobj/gdt.o
+                                         0x68 (size before relaxing)
+ .eh_frame      0x0000000000104984       0x60 lobj/memory.o
+                                         0x78 (size before relaxing)
+ .eh_frame      0x00000000001049e4       0xf0 lobj/idt.o
+                                        0x108 (size before relaxing)
+ .eh_frame      0x0000000000104ad4      0x1dc lobj/exceptions.o
+                                        0x1f4 (size before relaxing)
+
+.rel.dyn        0x0000000000104cb0        0x0
+ .rel.iplt      0x0000000000104cb0        0x0 lobj/loader.o
+ .rel.text      0x0000000000104cb0        0x0 lobj/loader.o
+
+.data           0x0000000000105000     0x1016
+ *(.data)
+ .data          0x0000000000105000        0x0 lobj/lmain.o
+ .data          0x0000000000105000        0x6 lobj/x86gdt.o
+ *fill*         0x0000000000105006        0x2 
+ .data          0x0000000000105008        0x4 lobj/stdlib.o
+ .data          0x000000000010500c        0x0 lobj/string.o
+ .data          0x000000000010500c        0x1 lobj/vga_terminal.o
+ .data          0x000000000010500d        0x0 lobj/gdt.o
+ *fill*         0x000000000010500d      0xff3 
+ .data          0x0000000000106000        0xe lobj/x86enter64.o
+ .data          0x000000000010600e        0x0 lobj/memory.o
+ .data          0x000000000010600e        0x0 lobj/idt.o
+ .data          0x000000000010600e        0x0 lobj/exceptions.o
+ *fill*         0x000000000010600e        0x2 
+ .data          0x0000000000106010        0x6 lobj/x86idt.o
+
+.igot.plt       0x0000000000106018        0x0
+ .igot.plt      0x0000000000106018        0x0 lobj/loader.o
+
+.bss            0x0000000000107000     0x8d60
+ *(COMMON)
+ COMMON         0x0000000000107000        0x8 lobj/vga_terminal.o
+                0x0000000000107000                s_iY
+                0x0000000000107004                s_iX
+ *(.bss)
+ *fill*         0x0000000000107008        0x8 
+ .bss           0x0000000000107010     0x8000 lobj/loader.o
+ .bss           0x000000000010f010        0x8 lobj/lmain.o
+ .bss           0x000000000010f018        0x0 lobj/stdlib.o
+ .bss           0x000000000010f018        0x0 lobj/string.o
+ .bss           0x000000000010f018        0x0 lobj/vga_terminal.o
+ .bss           0x000000000010f018       0x18 lobj/gdt.o
+ *fill*         0x000000000010f030       0x10 
+ .bss           0x000000000010f040      0x108 lobj/memory.o
+ *fill*         0x000000000010f148       0x18 
+ .bss           0x000000000010f160      0xc00 lobj/idt.o
+ .bss           0x000000000010fd60        0x0 lobj/exceptions.o
+LOAD lobj/loader.o
+LOAD lobj/lmain.o
+LOAD lobj/x86io.o
+LOAD lobj/x86stdlib.o
+LOAD lobj/x86gdt.o
+LOAD lobj/stdlib.o
+LOAD lobj/string.o
+LOAD lobj/vga_terminal.o
+LOAD lobj/gdt.o
+LOAD lobj/x86enter64.o
+LOAD lobj/memory.o
+LOAD lobj/idt.o
+LOAD lobj/exceptions.o
+LOAD lobj/x86idt.o
+LOAD lobj/x86int.o
+OUTPUT(os/loader.elf elf32-i386)
+
+.comment        0x0000000000000000       0x11
+ .comment       0x0000000000000000       0x11 lobj/lmain.o
+                                         0x12 (size before relaxing)
+ .comment       0x0000000000000011       0x12 lobj/stdlib.o
+ .comment       0x0000000000000011       0x12 lobj/string.o
+ .comment       0x0000000000000011       0x12 lobj/vga_terminal.o
+ .comment       0x0000000000000011       0x12 lobj/gdt.o
+ .comment       0x0000000000000011       0x12 lobj/memory.o
+ .comment       0x0000000000000011       0x12 lobj/idt.o
+ .comment       0x0000000000000011       0x12 lobj/exceptions.o
